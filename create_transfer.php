@@ -36,9 +36,10 @@ if ($payer_id != 0) {
 	/*
 	 * GET to fetch the user
 	 */
+     
 	$payer = request("users/$payer_id", "GET");
 	if (!isset($payer) || !isset($payer -> ID)) {
-		print("Error");
+		print("PHP Error : fetch the user");
 		return;
 	}
 }
