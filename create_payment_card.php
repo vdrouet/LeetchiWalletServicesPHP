@@ -9,7 +9,7 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
-$culture = isset($_REQUEST["culture"])? $_REQUEST["culture"] : "fr";
+$culture = isset($_REQUEST["Culture"])? $_REQUEST["Culture"] : "fr";
 
 if ($user_id == 0) {
 	/*
