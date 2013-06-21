@@ -252,6 +252,7 @@
                 <input type="submit" value="POST" />
 			user_id : <input type="text" size="12" maxlength="50" name="user_id">
                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
+               Culture : <input type="text" size="12" maxlength="150" name="Culture" value="fr" />
             </form>
             <!-- Delete Card -->
             <form name="input" action="delete_card.php" method="get">
