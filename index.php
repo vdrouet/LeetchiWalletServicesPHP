@@ -108,7 +108,15 @@
                     </form>
                 </div>
             </div>
-        </div>
+            <div class="enter">/user/{user_id}/wallets</div>
+                <div class="content">
+                    <!-- list wallet fir a user  -->
+                    <form name="input" action="get_wallets.php" method="get">
+                        <input type="submit" value="GET" />
+			            user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+                    </form>
+                </div>
+            </div>
 		<div class="enter">/operations/{operation_id}</div>
         <div class="content">
             <!-- get an operation  -->
@@ -232,13 +240,22 @@
 				user_id*: <input type="text" size="12" maxlength="150" name="user_id" />
                 Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
             </form>
-			
             <div class="enter">/wallet/{wallet_id}</div>
             <div class="content">
                 <!-- get operations on wallet  -->
                 <form name="input" action="get_wallet.php" method="get">
                     <input type="submit" value="GET" />
 		        wallet_id : <input type="text" size="12" maxlength="50" name="wallet_id">
+                </form>
+                <!-- pu wallet  -->
+                <form name="input" action="put_wallet.php" method="put">
+                    <input type="submit" value="PUT" />
+		            ID : <input type="text" size="12" maxlength="50" name="ID">
+                    <i>Tag : </i><input type="text" size="12" maxlength="50" name="Tag" value="Tag">
+                    <i>Name : </i><input type="text" size="12" maxlength="50" name="Name" value="Name">
+                    <i>Description : </i><input type="text" size="12" maxlength="50" name="Description" value="Description">
+                    <i>RaisingGoalAmount : </i><input type="text" size="12" maxlength="50" name="RaisingGoalAmount" value="100100">
+                    <i>ContributionLimitDate : </i><input type="text" size="12" maxlength="50" name="ContributionLimitDate" value="1451314781">
                 </form>
             </div>
             <div class="enter">/wallet/{wallet_id}/operations</div>
@@ -248,17 +265,31 @@
                     <input type="submit" value="GET" />
 			        wallet_id : <input type="text" size="12" maxlength="50" name="wallet_id">
                 </form>
-        </div>
+            </div>
+            <div class="enter">/wallet/{wallet_id}/users</div>
+            <div class="content">
+                <!-- list user on wallet  -->
+                <form name="input" action="get_user_for_wallet.php" method="get">
+                    <input type="submit" value="GET" />
+			        wallet_id : <input type="text" size="12" maxlength="50" name="wallet_id">
+                    include :
+                    <select name="include">
+                        <option value="NO_INCLUDE">Don't use include</option>
+                        <option value="All">All</option>
+                        <option value="Owners">Owners</option>
+                        <option value="Contributors">Contributors</option>
+                    </select>
+                </form>
+            </div>
         </div>
         <div class="enter">/card</div>
         <div class="content">
             <!-- Create Card -->
             <form name="input" action="create_payment_card.php" method="get">
                 <input type="submit" value="POST" />
-
 				user_id : <input type="text" size="12" maxlength="50" name="user_id">
                 Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
-Culture : <input type="text" size="12" maxlength="150" name="Culture" value="fr" />
+				Culture : <input type="text" size="12" maxlength="150" name="Culture" value="fr" />
             </form>
             <!-- Delete Card -->
             <form name="input" action="delete_card.php" method="get">

@@ -42,7 +42,19 @@ function buildRequestUrlPath($resourcePath)
 {
 	global $partnerID;
 	$resourcePath = trim($resourcePath, '/');
-	return "/v1/partner/$partnerID/$resourcePath" . "?ts=1324395087" /*. time()*/;	
+    
+    $url = "/v1/partner/$partnerID/$resourcePath";
+
+    // ? allready exist
+    $findme = '?';
+    $pos = strpos($resourcePath, $findme);
+    if ($pos === false) {
+        $url = $url."?";
+    } else {
+        $url = $url."&";
+    }
+
+	return $url."ts=1324395087" /*. time()*/;	
 }
 
  
