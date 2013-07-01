@@ -140,6 +140,38 @@
                 <input type="submit" value="GET" />
 				contribution_id: <input type="text" size="12" maxlength="150" name="contribution_id" />
             </form>
+            <!-- Create contribution -->
+            <form name="input" action="contribute.php" method="get">
+                <input type="submit" value="POST" />
+                UserID (required) : <input type="text" size="12" maxlength="150" name="UserID" value ="0"/>
+                WalletID (required) : <input type="text" size="12" maxlength="150" name="WalletID" value ="0"/>
+                Amount (required) : <input type="text" size="12" maxlength="150" name="Amount" value="1000"/>
+                ReturnURL (required) : <input type="text" size="12" maxlength="150" name="ReturnURL" value="<auto>" />
+                Tag (optional) : <input type="text" size="12" maxlength="150" name="Tag" value="<nil>"/>
+                ClientFeeAmount (optional) : <input type="text" size="12" maxlength="150" name="ClientFeeAmount" value="<nil>"/>
+                TemplateURL (optional) : <input type="text" size="12" maxlength="150" name="TemplateURL" value="<nil>"/>
+                RegisterMeanOfPayment (optional) : 
+                 <select name="RegisterMeanOfPayment">
+                    <option value="<nil>">NO_VALUE</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+                PaymentCardID (optional) : <input type="text" size="12" maxlength="150" name="PaymentCardID" value="<nil>"/>
+                Culture (optional) : <input type="text" size="12" maxlength="150" name="Culture" value="<nil>"/>
+                PaymentMethodType (optional) : 
+                <select name="methodType">
+                    <option value="<nil>">NO_VALUE</option>
+                    <option value="cb_visa_mastercard">cb_visa_mastercard</option>
+                    <option value="elv">elv</option>
+                    <option value="amex">amex</option>
+                </select>
+                Type (optional) :
+                <select name="Type">
+                    <option value="<nil>">NO_VALUE</option>
+                    <option value="Payline">Payline</option>
+                    <option value="Ogone">Ogone</option>
+                </select>
+            </form>
             <!-- Create User & start a payment-->
             <form name="input" action="contribute_personal_account.php" method="get">
                 <input type="submit" value="POST" />
