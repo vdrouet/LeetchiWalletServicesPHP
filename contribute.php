@@ -15,7 +15,18 @@ $parameters = array("UserID", "WalletID", "ReturnURL", "Amount", "ReturnURL", "T
 // default return URL
 $array = array();
 for ($i = 0; $i < count($parameters) ; $i++) {
-    if(isset($_REQUEST[$parameters[$i]]) && $_REQUEST[$parameters[$i]] != "<nil>" && $_REQUEST[$parameters[$i]] != "<auto>"){
+
+    if(isset($_REQUEST[$parameters[$i]]) && $parameters[$i] == "RegisterMeanOfPayment"){
+        if($_REQUEST[$parameters[$i]] == "Yes"){
+            $array[$parameters[$i]] = 1;
+        } else if($_REQUEST[$parameters[$i]] == "No"){
+            $array[$parameters[$i]] = 0;
+        } else if($_REQUEST[$parameters[$i]] == "<nil>"){
+            // skip the params
+        } else {
+            $array[$parameters[$i]] = $_REQUEST[$parameters[$i]];
+        }
+    } else if(isset($_REQUEST[$parameters[$i]]) && $_REQUEST[$parameters[$i]] != "<nil>" && $_REQUEST[$parameters[$i]] != "<auto>"){
         $array[$parameters[$i]] = $_REQUEST[$parameters[$i]];
     } else if(isset($_REQUEST[$parameters[$i]]) && $parameters[$i] == "ReturnURL" && $_REQUEST[$parameters[$i]] == "<auto>"){
         $array[$parameters[$i]] = "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php";
@@ -24,6 +35,8 @@ for ($i = 0; $i < count($parameters) ; $i++) {
 
 // Convert format
 $body = json_encode($array);
+
+print var_dump($body);
 
 $contribution = request("contributions", "POST", $body);
 
