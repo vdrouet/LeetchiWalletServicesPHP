@@ -8,22 +8,19 @@
 
 require_once(dirname(__FILE__) . "/lib/common.inc");
 
-$user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
+$paymentcard_id = isset($_REQUEST["paymentcard_id"]) ? $_REQUEST["paymentcard_id"] : 0;
 
-if ($user_id == 0) {
-	print("Error : not parameter user_id in url");
+if ($paymentcard_id == 0) {
+	print("Error : not parameter paymentcard_id in url");
 	return;
 }
 
-$user = request("users/$user_id", "GET");
+$card = request("cards/".$paymentcard_id, "GET");
 
-if (!isset($user) || !isset($user -> ID)) {
-	print("Error");
+if (!isset($card) || !isset($card -> ID)) {
+	print("card");
 	return;
 }
-
-$list_card_user = request("/users/$user->ID/cards", "GET");
-
 
 ?>
 </pre>

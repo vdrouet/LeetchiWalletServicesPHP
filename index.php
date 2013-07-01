@@ -109,14 +109,22 @@
                 </div>
             </div>
             <div class="enter">/user/{user_id}/wallets</div>
-                <div class="content">
-                    <!-- list wallet fir a user  -->
-                    <form name="input" action="get_wallets.php" method="get">
-                        <input type="submit" value="GET" />
-			            user_id* : <input type="text" size="12" maxlength="50" name="user_id">
-                    </form>
-                </div>
+            <div class="content">
+                <!-- list wallet fir a user  -->
+                <form name="input" action="get_wallets.php" method="get">
+                    <input type="submit" value="GET" />
+			        user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+                </form>
             </div>
+            <div class="enter">/user/{user_id}/cards</div>
+            <div class="content">
+                <!-- list cards for a user  -->
+                <form name="input" action="get_cards_for_user.php" method="get">
+                    <input type="submit" value="GET" />
+			        user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+                </form>
+            </div>
+        </div>
 		<div class="enter">/operations/{operation_id}</div>
         <div class="content">
             <!-- get an operation  -->
@@ -289,7 +297,6 @@
                 <input type="submit" value="POST" />
 				user_id : <input type="text" size="12" maxlength="50" name="user_id">
                 Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
-				Culture : <input type="text" size="12" maxlength="150" name="Culture" value="fr" />
             </form>
             <!-- Delete Card -->
             <form name="input" action="delete_card.php" method="get">
@@ -299,7 +306,7 @@
             <!-- get_payment_card -->
             <form name="input" action="get_payment_card.php" method="get">
                 <input type="submit" value="GET" />
-				user_id : <input type="text" size="12" maxlength="50" name="user_id">
+				paymentcard_id : <input type="text" size="12" maxlength="50" name="paymentcard_id">
             </form>
         </div>
         <div class="enter">/refund</div>
