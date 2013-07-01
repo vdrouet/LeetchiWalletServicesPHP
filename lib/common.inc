@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__) . "/config.inc");
+require_once(dirname(__FILE__) . "/utils.inc");
 
 /*
  * sign HTTP request
@@ -99,9 +100,11 @@ function request($resourcePath, $method, $body = null) {
 	}
 	curl_close($ch);
 	if ($data != false) {
-		print("response data:\n");
-		$result = json_decode($data);
-		print_r($result);
+		print("Response data (Json format):\n");
+        print_r(json_format($data));
+        print("\n\n---------------\n");
+        $result = json_decode($data);
+		//print_r($result);
 		if ($result != null) {
 			return $result;
 		}
