@@ -67,7 +67,9 @@ function request($resourcePath, $method, $body = null) {
 	print("Signature : $sign\n");
 	$leetchiBaseURL = getLeetchiBaseURL();
 	$url = $leetchiBaseURL . $requestUrlPath;
-	print("request: $url\n");
+	print("Request : $url\n");
+    print("Request data (Json format):\n");
+    print_r(json_format($body)."\n");
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	
