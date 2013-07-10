@@ -66,7 +66,7 @@ if ($beneficiary_id != 0) {
 }
 
 
-$body = json_encode(array("Tag" => "Custom data", "Tag" => $tag, "PayerID" => $payer -> ID, "BeneficiaryID" => $beneficiary -> ID,  "BeneficiaryWalletID" => $wallet_beneficiary_id , "PayerWalletID" => $wallet_payer_id,  "Amount" => $amount, "ClientFeeAmount" => $fee));
+$body = json_encode(array("Tag" => "Custom data", "Tag" => $tag, "PayerID" => $payer -> ID, "BeneficiaryID" => $beneficiary -> ID,  "BeneficiaryWalletID" => $wallet_beneficiary_id , "PayerWalletID" => $wallet_payer_id,  "Amount" => $amount, "ClientFeeAmount" => $fees));
 
 $transfer = request("transfers", "POST", $body);
 ?>
