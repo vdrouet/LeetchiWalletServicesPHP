@@ -297,7 +297,7 @@
 		wallet_beneficiary_id : <input type="text" size="12" maxlength="50" name="wallet_beneficiary_id">
            wallet_payer_id : <input type="text" size="12" maxlength="50" name="wallet_payer_id">
 		amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
-                fee : <input type="text" size="12" maxlength="50" name="fee" value="0">
+                fee : <input type="text" size="12" maxlength="50" name="fees" value="0">
            Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
             </form>
         </div>
