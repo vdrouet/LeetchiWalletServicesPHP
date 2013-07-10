@@ -13,7 +13,7 @@ $beneficiary_id = isset($_REQUEST["beneficiary_id"]) ? $_REQUEST["beneficiary_id
 $wallet_beneficiary_id = isset($_REQUEST["wallet_beneficiary_id"]) ? $_REQUEST["wallet_beneficiary_id"] : 0;
 $wallet_payer_id = isset($_REQUEST["wallet_payer_id"]) ? $_REQUEST["wallet_payer_id"] : 0;
 $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 0;
-$amount = isset($_REQUEST["fee"]) ? $_REQUEST["fee"] : 0;
+$fees = isset($_REQUEST["fees"]) ? $_REQUEST["fees"] : 0;
 $tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 
 

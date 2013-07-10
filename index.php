@@ -297,12 +297,13 @@
 		wallet_beneficiary_id : <input type="text" size="12" maxlength="50" name="wallet_beneficiary_id">
            wallet_payer_id : <input type="text" size="12" maxlength="50" name="wallet_payer_id">
 		amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
-                fee : <input type="text" size="12" maxlength="50" name="fees" value="0">
+                fees : <input type="text" size="12" maxlength="50" name="fees" value="0">
            Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
             </form>
         </div>
 
-<div class="enter">/amazon </div>
+        <div class="enter">/amazon
+        </div>
         <div class="content">
             <!-- amazon POST -->
             <form name="input" action="PostVoucherAmazon.php" method="post">
@@ -315,13 +316,14 @@
             </form>
         </div>
 
-        <div class="enter">/amazon/{voucherId} </div>
+        <div class="enter">/amazon/{voucherId}
+        </div>
         <div class="content">
             <!-- amazon POST -->
             <form name="input" action="GetVoucherAmazon.php" method="post">
                 <input type="submit" value="GET" />
                 voucher_id : <input type="text" size="12" maxlength="50" name="voucher_id">
-                
+
             </form>
         </div>
 
