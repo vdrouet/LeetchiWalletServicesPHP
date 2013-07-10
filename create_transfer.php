@@ -13,6 +13,7 @@ $beneficiary_id = isset($_REQUEST["beneficiary_id"]) ? $_REQUEST["beneficiary_id
 $wallet_beneficiary_id = isset($_REQUEST["wallet_beneficiary_id"]) ? $_REQUEST["wallet_beneficiary_id"] : 0;
 $wallet_payer_id = isset($_REQUEST["wallet_payer_id"]) ? $_REQUEST["wallet_payer_id"] : 0;
 $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 0;
+$amount = isset($_REQUEST["fee"]) ? $_REQUEST["fee"] : 0;
 $tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
 
 
@@ -36,10 +37,9 @@ if ($payer_id != 0) {
 	/*
 	 * GET to fetch the user
 	 */
-     
 	$payer = request("users/$payer_id", "GET");
 	if (!isset($payer) || !isset($payer -> ID)) {
-		print("PHP Error : fetch the user");
+		print("Error");
 		return;
 	}
 }
@@ -66,7 +66,7 @@ if ($beneficiary_id != 0) {
 }
 
 
-$body = json_encode(array("Tag" => "Custom data", "Tag" => $tag, "PayerID" => $payer -> ID, "BeneficiaryID" => $beneficiary -> ID,  "BeneficiaryWalletID" => $wallet_beneficiary_id , "PayerWalletID" => $wallet_payer_id,  "Amount" => $amount));
+$body = json_encode(array("Tag" => "Custom data", "Tag" => $tag, "PayerID" => $payer -> ID, "BeneficiaryID" => $beneficiary -> ID,  "BeneficiaryWalletID" => $wallet_beneficiary_id , "PayerWalletID" => $wallet_payer_id,  "Amount" => $amount, "ClientFeeAmount" => $fee));
 
 $transfer = request("transfers", "POST", $body);
 ?>
