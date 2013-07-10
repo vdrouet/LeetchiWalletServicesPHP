@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__) . "/config.inc");
+require_once(dirname(__FILE__) . "/utils.inc");
 
 /*
  * sign HTTP request
@@ -42,7 +43,19 @@ function buildRequestUrlPath($resourcePath)
 {
 	global $partnerID;
 	$resourcePath = trim($resourcePath, '/');
-	return "/v1/partner/$partnerID/$resourcePath" . "?ts=1324395087" /*. time()*/;	
+    
+    $url = "/v1/partner/$partnerID/$resourcePath";
+
+    // ? allready exist
+    $findme = '?';
+    $pos = strpos($resourcePath, $findme);
+    if ($pos === false) {
+        $url = $url."?";
+    } else {
+        $url = $url."&";
+    }
+
+	return $url."ts=1324395087" /*. time()*/;	
 }
 
  
@@ -54,7 +67,9 @@ function request($resourcePath, $method, $body = null) {
 	print("Signature : $sign\n");
 	$leetchiBaseURL = getLeetchiBaseURL();
 	$url = $leetchiBaseURL . $requestUrlPath;
-	print("request: $url\n");
+	print("Request : $url\n");
+    print("Request data (Json format):\n");
+    print_r(json_format($body)."\n");
 	$ch = curl_init($url);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	
@@ -87,9 +102,11 @@ function request($resourcePath, $method, $body = null) {
 	}
 	curl_close($ch);
 	if ($data != false) {
-		print("response data:\n");
-		$result = json_decode($data);
-		print_r($result);
+		print("Response data (Json format):\n");
+        print_r(json_format($data));
+        print("\n\n---------------\n");
+        $result = json_decode($data);
+		//print_r($result);
 		if ($result != null) {
 			return $result;
 		}

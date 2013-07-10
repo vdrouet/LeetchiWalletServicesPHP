@@ -9,6 +9,7 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
+$culture = isset($_REQUEST["Culture"])? $_REQUEST["Culture"] : "fr";
 
 if ($user_id == 0) {
 	/*
@@ -32,6 +33,7 @@ if (!isset($user) || !isset($user -> ID)) {
 
 //create payment card
 $body = json_encode(array("OwnerID" => $user -> ID,
+						  "Culture" => $culture,
                           "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return_create_card.php", 
                           "Tag" => $tag ));
 

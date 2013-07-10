@@ -42,6 +42,7 @@
             }
               -->
         </style>
+
     </head>
     <body>
         <p>Environment : <?php echo $leetchiBaseURL;?></p>
@@ -89,7 +90,6 @@
                 <input type="submit" value="GET" />
 			user_id: <input type="text" size="12" maxlength="150" name="user_id" />
             </form>
-        </div>
         <div class="enter">/user/{user_id}/operations</div>
         <div class="content">
             <!-- get operations of user -->
@@ -97,7 +97,6 @@
                 <input type="submit" value="GET" />
 		    user_id* : <input type="text" size="12" maxlength="50" name="user_id">
             </form>
-        </div>
         <div class="enter">/user/{user_id}/operations/personal</div>
         <div class="content">
             <!-- get operations on personal account  -->
@@ -106,8 +105,51 @@
 		        user_id* : <input type="text" size="12" maxlength="50" name="user_id">
             </form>
         </div>
-
-        <div class="enter">/operations/{operation_id}</div>
+            </div>
+            <div class="enter">/user/{user_id}/wallets</div>
+            <div class="content">
+                <!-- list wallet fir a user  -->
+                <form name="input" action="get_wallets.php" method="get">
+                    <input type="submit" value="GET" />
+			        user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+                </form>
+            </div>
+            <div class="enter">/user/{user_id}/cards</div>
+            <div class="content">
+                <!-- list cards for a user  -->
+                <form name="input" action="get_cards_for_user.php" method="get">
+                    <input type="submit" value="GET" />
+			        user_id* : <input type="text" size="12" maxlength="50" name="user_id">
+                </form>
+            </div>
+            <div class="enter">/user/{user_id}/strongAuthentication</div>
+            <div class="content">
+                <!-- post request strongAuthentication -->
+                <form name="input" action="post_request_strong_auth_user.php" method="get">
+                    <input type="submit" value="POST" />
+			        user_id : <input type="text" size="12" maxlength="50" name="user_id">
+                </form>
+                <!-- post request strongAuthentication -->
+                <form name="input" action="get_request_strong_auth_user.php" method="get">
+                    <input type="submit" value="GET"/>
+                    user_id : <input type="text" size="12" maxlength="50" name="user_id">
+                </form>
+                <!-- put request strongAuthentication -->
+                <form name="input" action="put_request_strong_auth_user.php" method="post">
+                    <input type="submit" value="PUT"/>
+                    user_id : <input type="text" size="12" maxlength="50" name="user_id">
+                    IsDocumentsTransmitted (optional) : 
+                    <select name="IsDocumentsTransmitted">
+                        <option value="<nil>">NO_VALUE</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="ERROR_VALUE">ERROR_VALUE</option>
+                    </select>
+                    Tag (optional) : <input type="text" size="12" maxlength="150" name="Tag" value="<nil>"/>
+                </form>
+            </div>
+        </div>
+		<div class="enter">/operations</div>
         <div class="content">
             <!-- get an operation  -->
             <form name="input" action="get_operation.php" method="get">
@@ -121,6 +163,39 @@
             <form name="input" action="get_contribution.php" method="get">
                 <input type="submit" value="GET" />
 			contribution_id: <input type="text" size="12" maxlength="150" name="contribution_id" />
+            </form>
+            <!-- Create contribution -->
+            <form name="input" action="contribute.php" method="get">
+                <input type="submit" value="POST" />
+                UserID (required) : <input type="text" size="12" maxlength="150" name="UserID" value ="0"/>
+                WalletID (required) : <input type="text" size="12" maxlength="150" name="WalletID" value ="0"/>
+                Amount (required) : <input type="text" size="12" maxlength="150" name="Amount" value="1000"/>
+                ReturnURL (required) : <input type="text" size="12" maxlength="150" name="ReturnURL" value="<auto>" />
+                Tag (optional) : <input type="text" size="12" maxlength="150" name="Tag" value="<nil>"/>
+                ClientFeeAmount (optional) : <input type="text" size="12" maxlength="150" name="ClientFeeAmount" value="<nil>"/>
+                TemplateURL (optional) : <input type="text" size="12" maxlength="150" name="TemplateURL" value="<nil>"/>
+                RegisterMeanOfPayment (optional) : 
+                 <select name="RegisterMeanOfPayment">
+                    <option value="<nil>">NO_VALUE</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="ERROR_VALUE">ERROR_VALUE</option>
+                </select>
+                PaymentCardID (optional) : <input type="text" size="12" maxlength="150" name="PaymentCardID" value="<nil>"/>
+                Culture (optional) : <input type="text" size="12" maxlength="150" name="Culture" value="<nil>"/>
+                PaymentMethodType (optional) : 
+                <select name="methodType">
+                    <option value="<nil>">NO_VALUE</option>
+                    <option value="cb_visa_mastercard">cb_visa_mastercard</option>
+                    <option value="elv">elv</option>
+                    <option value="amex">amex</option>
+                </select>
+                Type (optional) :
+                <select name="Type">
+                    <option value="<nil>">NO_VALUE</option>
+                    <option value="Payline">Payline</option>
+                    <option value="Ogone">Ogone</option>
+                </select>
             </form>
             <!-- Create User & start a payment-->
             <form name="input" action="contribute_personal_account.php" method="get">
@@ -136,6 +211,7 @@
 			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
                Register* : <input type="checkbox" name="registercard" />
 			PaymentCardID : <input type="text" size="12" maxlength="50" name="PaymentCardID" />
+				Method :
                 <select name="methodType">
                     <option value="cb_visa_mastercard">cb_visa_mastercard</option>
                     <option value="elv">elv</option>
@@ -146,11 +222,13 @@
         </div>
         <div class="enter">/recurrent-contributions</div>
         <div class="content">
+
             <!-- get a recurrent-contribution-->
             <form name="input" action="get_recurrent_contribution.php" method="get">
                 <input type="submit" value="GET" />
 			recurrent_contribution_id: <input type="text" size="12" maxlength="150" name="recurrent_contribution_id" />
             </form>
+
             <!-- create recurrent-contribution-->
             <form name="input" action="contribute_wallet_rec.php" method="get">
                 <input type="submit" value="POST" />
@@ -227,13 +305,22 @@
 			user_id*: <input type="text" size="12" maxlength="150" name="user_id" />
                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
             </form>
-
             <div class="enter">/wallet/{wallet_id}</div>
             <div class="content">
                 <!-- get operations on wallet  -->
                 <form name="input" action="get_wallet.php" method="get">
                     <input type="submit" value="GET" />
 		        wallet_id : <input type="text" size="12" maxlength="50" name="wallet_id">
+                </form>
+                <!-- pu wallet  -->
+                <form name="input" action="put_wallet.php" method="put">
+                    <input type="submit" value="PUT" />
+		            ID : <input type="text" size="12" maxlength="50" name="ID">
+                    <i>Tag : </i><input type="text" size="12" maxlength="50" name="Tag" value="Tag">
+                    <i>Name : </i><input type="text" size="12" maxlength="50" name="Name" value="Name">
+                    <i>Description : </i><input type="text" size="12" maxlength="50" name="Description" value="Description">
+                    <i>RaisingGoalAmount : </i><input type="text" size="12" maxlength="50" name="RaisingGoalAmount" value="100100">
+                    <i>ContributionLimitDate : </i><input type="text" size="12" maxlength="50" name="ContributionLimitDate" value="1451314781">
                 </form>
             </div>
             <div class="enter">/wallet/{wallet_id}/operations</div>
@@ -244,6 +331,21 @@
 		        wallet_id : <input type="text" size="12" maxlength="50" name="wallet_id">
                 </form>
             </div>
+            <div class="enter">/wallet/{wallet_id}/users</div>
+            <div class="content">
+                <!-- list user on wallet  -->
+                <form name="input" action="get_user_for_wallet.php" method="get">
+                    <input type="submit" value="GET" />
+			        wallet_id : <input type="text" size="12" maxlength="50" name="wallet_id">
+                    include :
+                    <select name="include">
+                        <option value="NO_INCLUDE">Don't use include</option>
+                        <option value="All">All</option>
+                        <option value="Owners">Owners</option>
+                        <option value="Contributors">Contributors</option>
+                    </select>
+                </form>
+        </div>
         </div>
         <div class="enter">/card</div>
         <div class="content">
@@ -261,7 +363,7 @@
             <!-- get_payment_card -->
             <form name="input" action="get_payment_card.php" method="get">
                 <input type="submit" value="GET" />
-			user_id : <input type="text" size="12" maxlength="50" name="user_id">
+				paymentcard_id : <input type="text" size="12" maxlength="50" name="paymentcard_id">
             </form>
         </div>
         <div class="enter">/refund</div>
@@ -274,6 +376,13 @@
                execution_id : <input type="text" size="12" maxlength="50" name="execution_id">
                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
             </form>
+            <!-- create Pending refund transfer -->
+            <form name="input" action="create_pending_refund_transfer.php" method="get">
+                <input type="submit" value="POST" />
+			    UserID : <input type="text" size="12" maxlength="50" name="UserID">
+			    TransferID : <input type="text" size="12" maxlength="50" name="TransferID">
+                Tag: <input type="text" size="12" maxlength="150" name="Tag" value="DefaultTag"/>
+            </form>            
         </div>
         <div class="enter">/beneficiaries</div>
         <div class="content">
@@ -286,6 +395,38 @@
                BankAccountOwnerAddress : <input type="text" size="12" maxlength="100" name="BankAccountOwnerAddress" value="Adresse par defaut">
                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
             </form>
+            <!-- Get beneficiaries -->
+            <form name="input" action="get_beneficiary.php" method="get">
+                <input type="submit" value="GET" />
+                beneficiary_id : <input type="text" size="12" maxlength="50" name="beneficiary_id">
+            </form>
+
+            <div class="enter">/beneficiaries/{user_id}/strongAuthentication</div>
+            <div class="content">
+                <!-- post request strongAuthentication -->
+                <form name="input" action="post_request_strong_auth_beneficiary.php" method="get">
+                    <input type="submit" value="POST" />
+			        beneficiary_id : <input type="text" size="12" maxlength="50" name="beneficiary_id">
+                </form>
+                <!-- post request strongAuthentication -->
+                <form name="input" action="get_request_strong_auth_beneficiary.php" method="get">
+                    <input type="submit" value="GET"/>
+                    beneficiary_id : <input type="text" size="12" maxlength="50" name="beneficiary_id">
+                </form>
+                <!-- put request strongAuthentication -->
+                <form name="input" action="put_request_strong_auth_beneficiary.php" method="post">
+                    <input type="submit" value="PUT"/>
+                    beneficiary_id : <input type="text" size="12" maxlength="50" name="beneficiary_id">
+                    IsDocumentsTransmitted (optional) : 
+                    <select name="IsDocumentsTransmitted">
+                        <option value="<nil>">NO_VALUE</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="ERROR_VALUE">ERROR_VALUE</option>
+                    </select>
+                    Tag (optional) : <input type="text" size="12" maxlength="150" name="Tag" value="<nil>"/>
+                </form>
+        </div>
         </div>
         <div class="enter">/transfers</div>
         <div class="content">
@@ -299,9 +440,41 @@
 		amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
            Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
             </form>
+            <!-- get transfer -->
+            <form name="input" action="get_transfer.php" method="get">
+                <input type="submit" value="GET" />
+			    transfer_id* : <input type="text" size="12" maxlength="50" name="transfer_id">
+            </form>
         </div>
-
-<div class="enter">/amazon </div>
+        <div class="enter">/transfer-ifg</div>
+        <div class="content">
+            <!-- Post transfer-ifg -->
+            <form name="input" action="create_expense_transferIFG.php" method="get">
+                <input type="submit" value="POST" />
+                wallet_id : <input type="text" size="12" maxlength="50" name="wallet_id" value="">
+                amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
+			    height : <input type="text" size="12" maxlength="34" name="height" value="800">
+                width : <input type="text" size="12" maxlength="100" name="width" value="600">
+                ifg_host : <input type="text" size="12" maxlength="100" name="ifg_host" value="127.0.0.1">
+                retailer_id: <input type="text" size="12" maxlength="100" name="retailer_id" value="Retailler_id"/>
+                track : <input type="text" size="12" maxlength="100" name="track" value="DefaultTrack">
+			    incentive_type : <input type="text" size="12" maxlength="100" name="incentive_type" value="incentive type par default">
+                locale : <input type="text" size="12" maxlength="100" name="locale" value="en">
+                retailer_secret : <input type="text" size="12" maxlength="100" name="retailer_secret" value="retailler secret par defaut">
+                Tag: <input type="text" size="12" maxlength="150" name="Tag" value="DefaultTag"/>
+            </form>
+        </div>
+        <div class="enter">/refund-ifg</div>
+        <div class="content">
+            <!-- Post transfer-ifg_Refund -->
+            <form name="input" action="create_expense_transferIFG_Refund.php" method="get">
+                <input type="submit" value="POST" />
+                transactionId : <input type="text" size="12" maxlength="100" name="transactionId" value="">
+                Tag: <input type="text" size="12" maxlength="150" name="Tag" value="DefaultTag"/>
+            </form>
+        </div>
+		
+		<div class="enter">/amazon </div>
         <div class="content">
             <!-- amazon POST -->
             <form name="input" action="PostVoucherAmazon.php" method="post">
@@ -312,31 +485,38 @@
                 store : <input type="text" size="12" maxlength="50" name="store" value="fr">
                 Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
             </form>
-        </div>
-
-        <div class="enter">/amazon/{voucherId} </div>
-        <div class="content">
-            <!-- amazon POST -->
+            <!-- amazon GET voucher -->
             <form name="input" action="GetVoucherAmazon.php" method="post">
                 <input type="submit" value="GET" />
                 voucher_id : <input type="text" size="12" maxlength="50" name="voucher_id">
-                
             </form>
         </div>
 
+        <div class="enter">/withdrawals</div>
+        <div class="content">
         <!-- create withdrawal -->
         <form name="input" action="create_withdrawal.php" method="get">
+                <input type="submit" value="POST" />
 		user_id* : <input type="text" size="12" maxlength="50" name="user_id">
 		wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
 		amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
         clientfeeamount : <input type="text" size="12" maxlength="50" name="ClientFeeAmount" value="0">
             <input type="submit" value="Create withdrawal" />
         </form>
-        <!-- get request strongAuthentication -->
-        <form name="input" action="get_request_strong_auth.php" method="get">
-		user_id* : <input type="text" size="12" maxlength="50" name="user_id">
-            <input type="submit" value="get strongAuthentication" />
+            <!-- get withdrawal -->
+            <form name="input" action="get_withdrawal.php" method="get">
+                <input type="submit" value="GET" />
+			    withdrawal_id : <input type="text" size="12" maxlength="50" name="withdrawal_id">
         </form>
+        </div>
+
+        <div class="enter">/StrongAuthentifications</div>
+        <div class="content">
+            <!-- Get all pending Strong Authentications -->
+            <form name="input" action="get_all_pending_Strong_Authentications.php" method="get">
+                <input type="submit" value="GET" />
+            </form>
+        </div>
 
         <!-- create transfer to personal account -->
         <form name="input" action="create_transfer_to_personal_account.php" method="get">
@@ -345,11 +525,7 @@
 		amount : <input type="text" size="12" maxlength="50" name="amount" value="1000">
             <input type="submit" value="create transfer to personal account" />
         </form>
-        <!-- get transfer -->
-        <form name="input" action="get_transfer.php" method="get">
-		transfer_id* : <input type="text" size="12" maxlength="50" name="transfer_id">
-            <input type="submit" value="get transfer" />
-        </form>
+
     </body>
 </body>
 </html>

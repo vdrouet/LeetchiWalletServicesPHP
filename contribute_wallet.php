@@ -74,6 +74,7 @@ $body = json_encode(array("UserID" => $user -> ID,
                           "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php",
                           "PaymentMethodType" => $PaymentMethodType));
 
+
 $contribution = request("contributions", "POST", $body);
 
 /*
