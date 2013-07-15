@@ -140,6 +140,8 @@
                     <option value="cb_visa_mastercard">cb_visa_mastercard</option>
                     <option value="elv">elv</option>
                     <option value="amex">amex</option>
+                    <option value="giropay">giropay</option>
+                    <option value="sofort">sofort</option>
                 </select>
                Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
             </form>
