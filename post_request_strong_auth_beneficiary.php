@@ -18,6 +18,10 @@ if ($beneficiary_id == 0) {
 	return;
 
 } else {
+    /*
+	 * GET to fetch the beneficiary
+	 */
+
 	 $body = json_encode(array("tag" => "Custom"));
 	 $request = request("beneficiaries/" . $beneficiary_id . "/strongAuthentication", "POST", $body);
 }
