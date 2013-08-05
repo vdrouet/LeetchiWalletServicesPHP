@@ -73,6 +73,7 @@
                     <option value="<nil>">NO_VALUE</option>
                 </select>
             </form>
+           
             <!-- Update User -->
             <form name="input" action="update_user.php" method="put">
                 <input type="submit" value="PUT" />
@@ -90,6 +91,72 @@
 			user_id: <input type="text" size="12" maxlength="150" name="user_id" />
             </form>
         </div>
+
+         <div class="enter">Authentication</div>
+        <div class="content">
+        <div class="enter">/users/{user_id}/strongAuthentication</div>
+        <div class="content">
+              <!-- put strong validation-->
+            <form name="input" action="post_request_strong_auth_user.php" method="POST">
+                <input type="submit" value="POST" />
+			user_id: <input type="text" size="12" maxlength="150" name="user_id" />
+			
+            </form>
+             <!-- get strong validation-->
+            <form name="input" action="get_request_strong_auth_user.php" method="GET">
+                <input type="submit" value="GET" />
+			user_id: <input type="text" size="12" maxlength="150" name="user_id" />
+			
+            </form>
+            <!-- get strong validation-->
+            <form name="input" action="put_request_strong_auth_user.php" method="PUT">
+                <input type="submit" value="PUT" />
+			user_id: <input type="text" size="12" maxlength="150" name="user_id" />
+			isConfirmed : <select name="IsDocumentsTransmitted">                 
+                    <option value="No">no</option>
+                    <option value="Yes">yes</option>
+                    <option value="error">error</option>
+                </select>
+               Tag: <input type="text" size="12" maxlength="150" name="tag" value="<nil>" />
+			
+            </form>
+        </div>
+
+        <div class="enter">/beneficiaries/{beneficiary_id}/strongAuthentication</div>
+        <div class="content">
+              <!-- put strong validation-->
+            <form name="input" action="post_request_strong_auth_beneficiary.php" method="POST">
+                <input type="submit" value="POST" />
+			beneficiary_id: <input type="text" size="12" maxlength="150" name="beneficiary_id" />
+			
+            </form>
+             <!-- get strong validation-->
+            <form name="input" action="get_request_strong_auth_beneficiary.php" method="GET">
+                <input type="submit" value="GET" />
+			beneficiary_id: <input type="text" size="12" maxlength="150" name="beneficiary_id" />
+			
+            </form>
+            <!-- get strong validation-->
+            <form name="input" action="put_request_strong_auth_beneficiary.php" method="POST">
+                <input type="submit" value="PUT" />
+			beneficiary_id: <input type="text" size="12" maxlength="150" name="beneficiary_id" />
+			isConfirmed : <select name="IsDocumentsTransmitted">                 
+                    <option value="No">no</option>
+                    <option value="Yes">yes</option>
+                    <option value="error">error</option>
+                </select>
+               Tag: <input type="text" size="12" maxlength="150" name="tag" value="<nil>" />
+			
+            </form>
+        </div>
+        <div class="enter">/strongAuthentication</div>
+        <div class="content">
+              <!-- put strong validation-->
+            <form name="input" action="get_all_pending_Strong_Authentications.php" method="GET">
+                <input type="submit" value="GET" />			
+            </form>            
+        </div>
+ </div>
         <div class="enter">/user/{user_id}/operations</div>
         <div class="content">
             <!-- get operations of user -->
