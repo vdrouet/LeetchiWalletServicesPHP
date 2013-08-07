@@ -61,6 +61,10 @@ if ($wallet_id == null) {
 	}
 }
 
+$type = "Payline";
+if($PaymentMethodType == "sofort" || $PaymentMethodType == "giropay"){
+	$type = "Ogone";
+}
 
 /*
  * POST request to create a contribution on a wallet
@@ -73,7 +77,8 @@ $body = json_encode(array("UserID" => $user -> ID,
                           "Tag" => $tag,
                           "RegisterMeanOfPayment" => $registercard, 
                           "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php",
-                          "PaymentMethodType" => $PaymentMethodType));
+                          "PaymentMethodType" => $PaymentMethodType,
+                          "Type" => $type));
 
 
 $contribution = request("contributions", "POST", $body);
