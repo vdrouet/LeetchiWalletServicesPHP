@@ -325,6 +325,11 @@
             <!-- get_payment_card -->
             <form name="input" action="get_payment_card.php" method="get">
                 <input type="submit" value="GET" />
+			paymentcard_id : <input type="text" size="12" maxlength="50" name="paymentcard_id">
+            </form>
+			<!-- get_payment_card -->
+            <form name="input" action="get_user_payment_card.php" method="get">
+                <input type="submit" value="GET user card list" />
 			user_id : <input type="text" size="12" maxlength="50" name="user_id">
             </form>
         </div>
