@@ -8,9 +8,11 @@
 
 require_once (dirname(__FILE__) . "/lib/common.inc");
 
-$user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
+$user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : null;
 $tag = isset($_REQUEST["tag"])? $_REQUEST["tag"] : "DefaultTag";
-$wallet_id = isset($_REQUEST["wallet_id"]) ? $_REQUEST["wallet_id"] : 0;
+$amount = isset($_REQUEST["amount"])? $_REQUEST["amount"] : 1000;
+$fees = isset($_REQUEST["fees"])? $_REQUEST["fees"] : 10;
+$wallet_id = isset($_REQUEST["wallet_id"]) ? $_REQUEST["wallet_id"] : null;
 $registercard = isset($_REQUEST["registercard"]) ? ($_REQUEST["registercard"] == "on" ? true : false) : false;
 $PaymentMethodType = isset($_REQUEST["methodType"]) ? $_REQUEST["methodType"] : "cb_visa_mastercard";
 
@@ -18,7 +20,7 @@ $PaymentMethodType = isset($_REQUEST["methodType"]) ? $_REQUEST["methodType"] : 
  * else we create the user
  */
 
-if ($user_id == 0) {
+if ($user_id == null) {
 	/*
 	 * POST request to create a user
 	 */
@@ -41,25 +43,24 @@ if (!isset($user) || !isset($user -> ID)) {
 /* we fetch the wallet with the wallet_id in the URL
  * else we create the wallet
  */
-
-if ($wallet_id == 0) {
+if ($wallet_id == null) {
 	/*
 	 * POST request to create a wallet
 	 */
 	$body = json_encode(array("Owners" => array($user -> ID)));
 	$wallet = request("wallets", "POST", $body);
     $wallet_id = $wallet -> ID;
-} else {
+} else if($wallet_id != 0) {
 	/*
 	 * GET to fetch the wallet
 	 */
-	$wallet = request("wallets/" . $wallet_id, "GET");
+ 	$wallet = request("wallets/" . $wallet_id, "GET");
+	if (!isset($wallet) || !isset($wallet -> ID)) {
+		print("Error");
+		return;
+	}
 }
 
-if (!isset($wallet) || !isset($wallet -> ID)) {
-	print("Error");
-	return;
-}
 
 /*
  * POST request to create a contribution on a wallet
@@ -67,8 +68,8 @@ if (!isset($wallet) || !isset($wallet -> ID)) {
 
 $body = json_encode(array("UserID" => $user -> ID,
                           "WalletID" => $wallet_id,
-                          "Amount" => 1000,
-                          "ClientFeeAmount" => "0",
+                          "Amount" => $amount,
+                          "ClientFeeAmount" => $fees,
                           "Tag" => $tag,
                           "RegisterMeanOfPayment" => $registercard, 
                           "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return.php",
@@ -77,14 +78,12 @@ $body = json_encode(array("UserID" => $user -> ID,
 
 $contribution = request("contributions", "POST", $body);
 
-/*
- * Redirect to url of payment
- */
+ if ($contribution != null) {
+        //header("Location: " . $contribution -> PaymentURL);
+       echo "<a href=\"$contribution->PaymentURL\">$$contribution->PaymentURL</a>";
+        exit();
+ }
 
-if ($contribution != null) {
-	//header("Location: " . $contribution -> PaymentURL);
-	exit();
-}
 ?>
 
 </pre>

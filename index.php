@@ -189,18 +189,13 @@
                 <input type="submit" value="GET" />
 			contribution_id: <input type="text" size="12" maxlength="150" name="contribution_id" />
             </form>
-            <!-- Create User & start a payment-->
-            <form name="input" action="contribute_personal_account.php" method="get">
-                <input type="submit" value="POST" />
-			user_id*: <input type="text" size="12" maxlength="150" name="user_id" />
-			amount : <input type="text" size="12" maxlength="150" name="amount" value="1000" />
-               Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag" />
-            </form>
             <!-- Contribu on a wallet-->
             <form name="input" action="contribute_wallet.php" method="get">
                 <input type="submit" value="POST" />
 			user_id* : <input type="text" size="12" maxlength="50" name="user_id">
 			wallet_id* : <input type="text" size="12" maxlength="50" name="wallet_id">
+			amount : <input type="text" size="12" maxlength="150" name="amount" value="1000" />
+			fees : <input type="text" size="12" maxlength="150" name="fees" value="10" />
                Register* : <input type="checkbox" name="registercard" />
 			PaymentCardID : <input type="text" size="12" maxlength="50" name="PaymentCardID" />
                 <select name="methodType">
