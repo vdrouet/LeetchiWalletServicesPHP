@@ -34,7 +34,7 @@ if (!isset($user) || !isset($user -> ID)) {
 //create payment card
 $body = json_encode(array("OwnerID" => $user -> ID,
 						  "Culture" => $culture,
-                          "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . "/return_create_card.php", 
+                          "ReturnURL" => "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . str_replace( "\\", "", dirname($_SERVER["REQUEST_URI"])) . "/return_create_card.php", 
                           "Tag" => $tag ));
 
 $card = request("cards", "POST", $body);

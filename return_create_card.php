@@ -5,11 +5,11 @@
 <body>
 <pre>
 <?php
-require_once(dirname(__FILE__) . "/common.inc");
+require_once (dirname(__FILE__) . "/lib/common.inc");
 
 $id_card = $_GET['PaymentCardID'];
 
-$card = request("cards/".$id_card, "GET");
+$card = request("cards/" . $id_card, "GET");
 
 ?>
 </pre>
