@@ -368,6 +368,11 @@
         </div>
         <div class="enter">/refund</div>
         <div class="content">
+            <!-- get_payment_card -->
+            <form name="input" action="get_refund.php" method="get">
+                <input type="submit" value="GET" />
+				refund_id : <input type="text" size="12" maxlength="50" name="refund_id">
+            </form>
             <!-- create Pending refund -->
             <form name="input" action="create_pending_refund.php" method="get">
                 <input type="submit" value="POST" />
@@ -375,6 +380,14 @@
 			    contribution_id : <input type="text" size="12" maxlength="50" name="contribution_id">
                 execution_id : <input type="text" size="12" maxlength="50" name="execution_id">
                 Tag: <input type="text" size="12" maxlength="150" name="tag" value="DefaultTag"/>
+            </form>
+        </div>
+        <div class="enter">/transfer-refunds</div>
+        <div class="content">
+            <!-- get_payment_card -->
+            <form name="input" action="get_refund_transfer.php" method="get">
+                <input type="submit" value="GET" />
+				transferrefund_id : <input type="text" size="12" maxlength="50" name="transferrefund_id">
             </form>
             <!-- create Pending refund transfer -->
             <form name="input" action="create_pending_refund_transfer.php" method="get">
@@ -474,7 +487,7 @@
             </form>
         </div>
 		
-		<div class="enter">/amazon </div>
+		<div class="enter">/amazonvoucher</div>
         <div class="content">
             <!-- amazon POST -->
             <form name="input" action="PostVoucherAmazon.php" method="post">
