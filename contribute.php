@@ -10,7 +10,7 @@
 require_once (dirname(__FILE__) . "/lib/common.inc");
 
 // Retrieve parameters
-$parameters = array("UserID", "WalletID", "ReturnURL", "Amount", "ReturnURL", "Tag", "ClientFeeAmount", "TemplateURL", "RegisterMeanOfPayment", "PaymentCardID", "Culture", "methodType", "Type");
+$parameters = array("UserID", "WalletID", "ReturnURL", "Amount", "ReturnURL", "Tag", "ClientFeeAmount", "TemplateURL", "RegisterMeanOfPayment", "PaymentCardID", "Culture", "PaymentMethodType", "Type");
 
 // default return URL
 $array = array();
