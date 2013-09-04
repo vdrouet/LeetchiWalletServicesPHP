@@ -45,8 +45,7 @@ $contribution = request("contributions", "POST", $body);
  */
 
 if ($contribution != null) {
-	header("Location: " . $contribution -> PaymentURL);
-	exit();
+    print "<a href=" . $contribution -> PaymentURL . ">Aller au paiement</a>";
 } else {
     print "contribution is not create";
 }

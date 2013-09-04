@@ -184,11 +184,13 @@
                 PaymentCardID (optional) : <input type="text" size="12" maxlength="150" name="PaymentCardID" value="<nil>"/>
                 Culture (optional) : <input type="text" size="12" maxlength="150" name="Culture" value="<nil>"/>
                 PaymentMethodType (optional) : 
-                <select name="methodType">
+                <select name="PaymentMethodType">
                     <option value="<nil>">NO_VALUE</option>
                     <option value="cb_visa_mastercard">cb_visa_mastercard</option>
                     <option value="elv">elv</option>
                     <option value="amex">amex</option>
+                    <option value="giropay">giropay</option>
+                    <option value="sofort">sofort</option>
                 </select>
                 Type (optional) :
                 <select name="Type">
