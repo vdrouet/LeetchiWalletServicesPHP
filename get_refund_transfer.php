@@ -9,14 +9,14 @@
 require_once(dirname(__FILE__) . "/lib/common.inc");
 
 
-$refund_id = isset($_REQUEST["refund_id"]) ? $_REQUEST["refund_id"] : 0;
+$refund_id = isset($_REQUEST["transferrefund_id"]) ? $_REQUEST["transferrefund_id"] : 0;
 
 if ($refund_id == 0) {
 	print("Error : not parameter refund_id in url");
 	return;
 }
 
-$refund = request("refunds/".$refund_id, "GET");
+$refund = request("transfer-refunds/".$refund_id, "GET");
 
 ?>
 
