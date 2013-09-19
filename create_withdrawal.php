@@ -11,7 +11,7 @@ require_once (dirname(__FILE__) . "/lib/common.inc");
 $user_id = isset($_REQUEST["user_id"]) ? $_REQUEST["user_id"] : 0;
 $wallet_id = isset($_REQUEST["wallet_id"]) ? $_REQUEST["wallet_id"] : 0;
 $amount = isset($_REQUEST["amount"]) ? $_REQUEST["amount"] : 0;
-$clientFeeAmount  = isset($_REQUEST["ClientFeeAmount "]) ? $_REQUEST["ClientFeeAmount "] : 0;
+$clientFeeAmount  = isset($_REQUEST["ClientFeeAmount"]) ? $_REQUEST["ClientFeeAmount"] : 0;
 
 if ($user_id == 0) {
 	print("Error : not parameter user_id in url");
